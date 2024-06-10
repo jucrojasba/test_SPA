@@ -1,0 +1,6 @@
+{
+   "users":[],
+   "roles":[{"id":1, "rol":"Administrador"},{"id":2, "rol":"Visitante"}],
+   "vuelos":[],
+   "reservas":[]
+}

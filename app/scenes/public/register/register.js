@@ -36,12 +36,39 @@ export function RegisterScene() {
       </div>
     </form>
   `;
-
+  //Logica para registrarse 
   const $register = document.getElementById("registerForm");
-  console.log($register);
-  $register.addEventListener("submit", (e) => {
+  
+  $register.addEventListener("submit", async(e) => {
     e.preventDefault();
-    alert("Usuario creado exitosamente");
-    navigateTo("/login");
+    const $nombre = document.getElementById("nombre").value;
+    const $email = document.getElementById("email").value;
+    const $birthday = document.getElementById("birthday").value;
+    const $password = document.getElementById("password").value;
+    if(confirm(`${$nombre}, ¿Estas seguro que deseas registrarte con la informacion proporcionada?`)){
+      const newUser = {
+        name: $nombre,
+        email: $email,
+        birthday: $birthday,
+        password: $password,
+        rolId: 2
+      };
+      try {
+        const postRegister = await fetch("http://localhost:3000/users",
+          {
+            method: "POST",
+            headers:{
+              "Content-Type": "aplication/json"
+            },
+            body: JSON.stringify(newUser)
+          }
+        );
+        alert("Usuario creado exitosamente");
+        navigateTo("/login");
+      } catch (error) {
+        console.log(error);
+      };
+    }
+    
   });
 }

@@ -1,6 +1,32 @@
 {
-   "users":[],
-   "roles":[{"id":1, "rol":"Administrador"},{"id":2, "rol":"Visitante"}],
-   "vuelos":[],
-   "reservas":[]
+  "users": [
+    {
+      "id": "dede",
+      "name": "Juan Camilo Rojas",
+      "email": "juanrojas@example.com",
+      "birthday": "1998-08-20",
+      "password": "password123",
+      "rolId": 1
+    },
+    {
+      "id": "4de9",
+      "name": "Visitor",
+      "email": "visitor@example.com",
+      "birthday": "2005-10-20",
+      "password": "visitor123",
+      "rolId": 2
+    }
+  ],
+  "roles": [
+    {
+      "id": "1",
+      "rol": "Administrador"
+    },
+    {
+      "id": "2",
+      "rol": "Visitante"
+    }
+  ],
+  "vuelos": [],
+  "reservas": []
 }

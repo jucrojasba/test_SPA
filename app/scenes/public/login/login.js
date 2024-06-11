@@ -35,20 +35,25 @@ export function LoginScene() {
   });
 
   //Logica para loguearse
-  const $email = document.getElementById("email");
-  const $password = document.getElementById("password");
   const $loginForm = document.getElementById("loginForm");
+
   $loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const users = await fetch("http://localhost:3000/users");
-    const user = users.find(
-      (user) => $email === user.email && user.password === $password
-    );
+    const $email = document.getElementById("email").value;
+    const $password = document.getElementById("password").value;
+    const response = await fetch("http://localhost:3000/users");
+    const users = await response.json();
+    const user = users.find(user => {
+      return user.email === $email && user.password === $password;
+    });
+
+    if (user) {
+      const token = Math.random().toString(36).substring(2);
+      localStorage.setItem("token", token);
+      localStorage.setItem("rol", user.rolId);
+      navigateTo("/dashboard");
+    } else {
+      alert("Credenciales inválidas");
+    }
   });
-  if (user) {
-    const token = Math.random().toString(36).substring(2);
-    localStorage.setItem("toker", token);
-  } else {
-    alert("Credenciales inválidas");
-  }
 }

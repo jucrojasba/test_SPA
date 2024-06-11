@@ -1,0 +1,55 @@
+.upper-bar{
+    box-sizing: inherit;
+    top:0;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+    align-items: center;
+    background-color: rgb(46, 46, 122);
+    color: white;
+}
+
+.upper-bar > nav>ul{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.upper-bar>nav>ul>li>button{
+    border-radius: 5px;
+    cursor: pointer;
+}
+.vuelos{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+    margin: 0 auto;
+    padding-top: 50px;
+    gap:10px;
+    align-items: center;
+    justify-content: center;
+}
+.vuelos > .vuelo{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(136, 136, 192);
+    border-radius: 20px;
+    padding: 20px 10px;
+    text-align: justify;
+}
+
+.vuelos>.vuelo> .action-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.vuelos>.vuelo> .action-buttons>button{
+    border-radius: 3px;
+    cursor: pointer;
+}

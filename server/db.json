@@ -29,22 +29,13 @@
   ],
   "vuelos": [
     {
-      "id": "0",
-      "number": "878",
-      "origin": "JFK",
-      "destination": "CDG",
-      "departure": "2024-06-11T01:46",
-      "arrival": "2024-06-11T01:48",
-      "capacity":"200"
-    },
-    {
       "id": "1",
       "number": "878",
       "origin": "JFK",
       "destination": "CDG",
       "departure": "2024-06-11T01:46",
       "arrival": "2024-06-11T01:48",
-      "capacity":"200"
+      "capacity": "200"
     },
     {
       "id": "2",
@@ -53,7 +44,7 @@
       "destination": "CDG",
       "departure": "2024-06-11T01:46",
       "arrival": "2024-06-11T01:48",
-      "capacity":"200"
+      "capacity": "200"
     },
     {
       "id": "3",
@@ -62,16 +53,7 @@
       "destination": "CDG",
       "departure": "2024-06-11T01:46",
       "arrival": "2024-06-11T01:48",
-      "capacity":"200"
-    },
-    {
-      "id": "4",
-      "number": "878",
-      "origin": "JFK",
-      "destination": "CDG",
-      "departure": "2024-06-11T01:46",
-      "arrival": "2024-06-11T01:48",
-      "capacity":"200"
+      "capacity": "200"
     }
   ],
   "reservas": []

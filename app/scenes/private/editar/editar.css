@@ -1,0 +1,44 @@
+.upper-bar{
+    box-sizing: inherit;
+    top:0;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+    align-items: center;
+    background-color: rgb(46, 46, 122);
+    color: white;
+}
+
+.upper-bar > nav>ul{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.upper-bar>nav>ul>li>button{
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-form{
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.edit-form>form{
+    border: 1px solid blue;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.edit-form>form>h4{
+    margin:0;
+    padding: 0;
+}

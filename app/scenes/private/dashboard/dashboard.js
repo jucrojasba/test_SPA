@@ -21,7 +21,7 @@ $root.innerHTML=`
 //Logica del logout
 const $logout = document.getElementById('logout');
 $logout.addEventListener('click',()=>{
-    localStorage.clear('token','rol');
+    localStorage.clear('token','rol','idVueloEdit');
     navigateTo("/login");
 })
 
@@ -42,8 +42,8 @@ const mostrarVuelos = async ()=>{
                         <p>Arrival: ${new Date(vuelo.arrival)}</p>
                         <h4>Capacity: ${vuelo.capacity}</h4>
                         <div class=${styles["action-buttons"]}>
-                            <button vuelo="${vuelo.id}" id="editar">Editar</button>
-                            <button vuelo="${vuelo.id}" id="eliminar">Eliminar</button>
+                            <button class="editar" vuelo="${vuelo.id}">Editar</button>
+                            <button class="eliminar" vuelo="${vuelo.id}">Eliminar</button>
                         </div>
                     </div>
                     `
@@ -61,7 +61,7 @@ const mostrarVuelos = async ()=>{
                         <p>Arrival: ${new Date(vuelo.arrival)}</p>
                         <h4>Capacity: ${vuelo.capacity}</h4>
                         <div class=${styles["action-buttons"]}>
-                            <button vuelo="${vuelo.id}" id="reservar">Reservar</button>
+                            <button class="reservar" vuelo="${vuelo.id}">Reservar</button>
                         </div>
                     </div>
                     `
@@ -69,15 +69,40 @@ const mostrarVuelos = async ()=>{
             }
         `; 
     }
+    //Logica para eliminar vuelo
+    if(rol==1){
+        const $eliminarVuelo = document.querySelectorAll('.eliminar');
+        $eliminarVuelo.forEach(e=>e.addEventListener('click', async()=>{
+            const responseVuelo = await fetch(`http://localhost:3000/vuelos/${e.getAttribute('vuelo')}`);
+            const nombreVuelo = await responseVuelo.json();
+            if(confirm(`¿Desea eliminar el vuelo ${nombreVuelo.number}?`)) {
+                try {
+                    const responseEliminar = await fetch(`http://localhost:3000/vuelos/${e.getAttribute('vuelo')}`,
+                      {
+                        method: "DELETE",
+                        headers:{
+                          "Content-Type": "aplication/json"
+                        },
+                      }
+                    );
+                    alert("Vuelo eliminado");
+                    location.reload();
+                  } catch (error) {
+                    console.log(error);
+                  };
+            }           
+        })
+    )}
+
+    //Logica para editar vuelo
+    if(rol==1){
+        const $editarVuelo = document.querySelectorAll('.editar');
+        $editarVuelo.forEach(e=>e.addEventListener('click', ()=>{
+            localStorage.setItem('idVueloEdit', e.getAttribute('vuelo'));
+            navigateTo("/editar");       
+        })
+    )}
 }
 mostrarVuelos();
-
-//Logica para eliminar vuelo
-if(rol==1){
-    const $eliminarVuelo = document.getElementById('eliminar');
-    console.log($eliminarVuelo);
-    $eliminarVuelo.addEventListener('click', ()=>{
-        console.log($eliminarVuelo);
-    })
-}
+console.log
 }

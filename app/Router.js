@@ -6,10 +6,17 @@ export function Router() {
   const publicRoute = routes.public.find((route) => route.path === path);
   const privateRoute = routes.private.find((route) => route.path === path);
   const token = localStorage.getItem('token');
+  const rol = localStorage.getItem('rol');
   
   //Si accede a ruta principal y no hay token redirige al login
   if(path === '/' && !token){
     LoginScene();
+  }
+
+   //Si accede a ruta editar y rol diferente de admin, redirige al dashboard
+   if(path == '/editar' && token && rol!=1){
+    navigateTo("/dashboard");
+    return;
   }
 
   //Manejo de rutas publicas
